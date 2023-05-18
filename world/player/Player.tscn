@@ -1,0 +1,172 @@
+[gd_scene load_steps=13 format=3 uid="uid://wi0vimq6qhwf"]
+
+[ext_resource type="Texture2D" uid="uid://djbsh02vcxk1t" path="res://world/player/Character.png" id="1"]
+[ext_resource type="Script" path="res://world/player/PlayerControler.gd" id="2"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(9, 30)
+
+[sub_resource type="Animation" id="Animation_e84kl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_tk8yu"]
+resource_name = "fall"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [11, 12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_n7bpp"]
+resource_name = "glide"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14]
+}
+
+[sub_resource type="Animation" id="Animation_bghm5"]
+resource_name = "idle"
+length = 8.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 2]
+}
+
+[sub_resource type="Animation" id="Animation_f2761"]
+resource_name = "jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+
+[sub_resource type="Animation" id="Animation_65yo2"]
+resource_name = "run"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_txeip"]
+resource_name = "snooze"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_52ej6"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5oi67"]
+_data = {
+"RESET": SubResource("Animation_e84kl"),
+"fall": SubResource("Animation_tk8yu"),
+"glide": SubResource("Animation_n7bpp"),
+"idle": SubResource("Animation_bghm5"),
+"jump": SubResource("Animation_f2761"),
+"run": SubResource("Animation_65yo2"),
+"snooze": SubResource("Animation_txeip"),
+"walk": SubResource("Animation_52ej6")
+}
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 1
+collision_mask = 0
+script = ExtResource("2")
+
+[node name="Spritesheet" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+texture = ExtResource("1")
+hframes = 5
+vframes = 3
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5oi67")
+}

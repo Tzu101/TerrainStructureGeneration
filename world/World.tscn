@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c46bu6fvtrso5"]
+
+[ext_resource type="Script" path="res://world/World.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://dvbisih5wopos" path="res://world/player/Spectator.tscn" id="2"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Spectator" parent="." instance=ExtResource("2")]
