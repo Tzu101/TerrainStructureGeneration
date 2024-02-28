@@ -67,7 +67,7 @@ class RegionLoader extends MultiThread:
 			heightmap = WorldFiles.load_heightmap(world_name, region)
 			
 			if not heightmap:
-				heightmap = regionGenerator.generate_heightmap(region)
+				heightmap = regionGenerator.generate_heightmap(int(region))
 				WorldFiles.init_region_folder(world_name, region)
 				WorldFiles.save_heightmap(world_name, heightmap)
 				
@@ -162,7 +162,7 @@ class ChunkLoader extends MultiThread:
 			
 			mutex.lock()
 			var loading_chunk_copy := Vector2(loading_chunk)
-			var heightmap_copy: WorldGenerator.Heightmap = heightmaps[loading_chunk_copy.x]
+			var heightmap_copy: WorldGenerator.Heightmap = heightmaps.get(loading_chunk_copy.x)
 			mutex.unlock()
 			
 			if heightmap_copy == null:

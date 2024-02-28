@@ -59,6 +59,6 @@ func _init(_local_position: Vector2, _id: int):
 	shape = RectangleShape2D.new()
 	shape.size = Vector2(Block.SIZE, Block.SIZE)
 	
-	if id != Id.GRASS:
-		rotate(randi() % 4 * (90 * PI / 180))
+	if id != Id.GRASS or id != Id.DEEPGRASS:
+		self.call_deferred("rotate", randi() % 4 * (90 * PI / 180))
 	

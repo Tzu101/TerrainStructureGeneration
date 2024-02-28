@@ -43,7 +43,7 @@ static func build(chunk: Chunk) -> void:
 			
 			if foreground_block_id != Block.Id.AIR:
 				var block = Block.build(block_position, foreground_block_id)
-				chunk.add_child(block)
+				chunk.call_deferred("add_child", block)
 				chunk.blocks[row].append(block)
 			
 			elif background_block_id != Block.Id.AIR:
@@ -51,7 +51,7 @@ static func build(chunk: Chunk) -> void:
 				var block_background = BlockBackground.new()
 				block.add_child(block_background)
 				
-				chunk.add_child(block)
+				chunk.call_deferred("add_child", block)
 				chunk.blocks[row].append(block)
 			
 			else:

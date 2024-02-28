@@ -70,6 +70,11 @@ static func load_heightmap(world_name: String, region: float) -> WorldGenerator.
 	return heightmap
 
 static func _save_chunk_layers(file_path: String, chunk_layers: Chunk.Layers):
+	
+	# TEMP fix, TODO find cause
+	if not chunk_layers:
+		return
+	
 	var file_data: Array[int] = []
 	
 	for row in range(Chunk.BLOCK_NUM):

@@ -387,14 +387,34 @@ class StructureGenerator:
 	var TreeNoise: SimplexNoise
 	
 	func _init(world_seed: int):
-		pass
+		TreeNoise = SimplexNoise.new(world_seed, 3, 0.01)
 	
 	func generate_trees(heightmap: Heightmap) -> Array[Structure]:
-		if heightmap.overworld_surface[1] < heightmap.overworld_landscape[1]:
-			var tree_x = heightmap.region * Chunk.BLOCK_NUM
-			var tree_y = heightmap.overworld_surface[1] - 3
-			var tree = Structure.new(Vector2(tree_x, tree_y), Vector2(1, 3), [[Block.Id.WOOD], [Block.Id.WOOD], [Block.Id.WOOD]], [[Block.Id.AIR], [Block.Id.AIR], [Block.Id.AIR]])
-			return [tree]
+		var heightmap_pos := 3
+		if heightmap.overworld_surface[heightmap_pos] < heightmap.overworld_landscape[heightmap_pos]:
+			if TreeNoise.get_1d(heightmap.overworld_surface[heightmap_pos]) >= -0.25:
+				var tree_x = heightmap.region * Chunk.BLOCK_NUM
+				var tree_y = heightmap.overworld_surface[heightmap_pos] - 5
+				var tree = Structure.new(Vector2(tree_x, tree_y), Vector2(5, 5), 
+					[
+						[Block.Id.AIR, Block.Id.LEAF, Block.Id.LEAF, Block.Id.LEAF, Block.Id.AIR],
+						[Block.Id.LEAF, Block.Id.LEAF, Block.Id.WOOD, Block.Id.LEAF, Block.Id.LEAF],
+						[Block.Id.LEAF, Block.Id.LEAF, Block.Id.WOOD, Block.Id.LEAF, Block.Id.LEAF],
+						[Block.Id.AIR, Block.Id.LEAF, Block.Id.WOOD, Block.Id.LEAF, Block.Id.AIR],
+						[Block.Id.AIR, Block.Id.AIR, Block.Id.WOOD, Block.Id.AIR, Block.Id.AIR],
+						[Block.Id.AIR, Block.Id.AIR, Block.Id.WOOD, Block.Id.AIR, Block.Id.AIR],
+					], 
+					[
+						[Block.Id.AIR, Block.Id.AIR, Block.Id.AIR, Block.Id.AIR, Block.Id.AIR],
+						[Block.Id.AIR, Block.Id.AIR, Block.Id.AIR, Block.Id.AIR, Block.Id.AIR],
+						[Block.Id.AIR, Block.Id.AIR, Block.Id.AIR, Block.Id.AIR, Block.Id.AIR],
+						[Block.Id.AIR, Block.Id.AIR, Block.Id.AIR, Block.Id.AIR, Block.Id.AIR],
+						[Block.Id.AIR, Block.Id.AIR, Block.Id.AIR, Block.Id.AIR, Block.Id.AIR],
+						[Block.Id.AIR, Block.Id.AIR, Block.Id.AIR, Block.Id.AIR, Block.Id.AIR],
+					])
+				return [tree]
+			else:
+				return []
 		else:
 			return []
 	
