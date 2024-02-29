@@ -29,9 +29,9 @@ const IdToTexture = {
 	Id.GRASS: Vector2(0, 0),
 	Id.DIRT: Vector2(20, 0),
 	Id.STONE: Vector2(40, 0),
-	Id.DEEPGRASS: Vector2(0, 0),
-	Id.DEEPDIRT: Vector2(20, 0),
-	Id.DEEPSTONE: Vector2(40, 0),
+	Id.DEEPGRASS: Vector2(0, 20),
+	Id.DEEPDIRT: Vector2(20, 20),
+	Id.DEEPSTONE: Vector2(40, 20),
 	Id.WOOD: Vector2(60, 0),
 	Id.LEAF: Vector2(60, 20),
 }
@@ -59,6 +59,6 @@ func _init(_local_position: Vector2, _id: int):
 	shape = RectangleShape2D.new()
 	shape.size = Vector2(Block.SIZE, Block.SIZE)
 	
-	if id != Id.GRASS or id != Id.DEEPGRASS:
+	if id != Id.GRASS and id != Id.DEEPGRASS:
 		self.call_deferred("rotate", randi() % 4 * (90 * PI / 180))
 	

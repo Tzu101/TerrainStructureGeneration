@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd83hyg73dclm"
-path="res://.godot/imported/MoreTiles.png-eb7e8522a16c2884032b7b53ea748247.ctex"
+uid="uid://0ebwsias0be5"
+path="res://.godot/imported/Caverns.PNG-919f628a7c867575f20e044009f3be1e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world/chunk/block/texture/MoreTiles.png"
-dest_files=["res://.godot/imported/MoreTiles.png-eb7e8522a16c2884032b7b53ea748247.ctex"]
+source_file="res://readme_assets/Caverns.PNG"
+dest_files=["res://.godot/imported/Caverns.PNG-919f628a7c867575f20e044009f3be1e.ctex"]
 
 [params]
 

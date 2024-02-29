@@ -15,7 +15,7 @@ static func position_to_block(world_position: Vector2) -> Vector2:
 	return floor(world_position / Block.SIZE)
 
 
-var world_seed = randf() * 10000
+var world_seed = 69 * 420
 var world_name = 'Hello world'
 
 var chunks: Dictionary

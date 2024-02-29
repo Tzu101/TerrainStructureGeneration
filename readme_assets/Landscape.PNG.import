@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd83hyg73dclm"
-path="res://.godot/imported/MoreTiles.png-eb7e8522a16c2884032b7b53ea748247.ctex"
+uid="uid://cjp5rehm83lle"
+path="res://.godot/imported/Landscape.PNG-cb16560cfd3dd95b18b874e4c2f3ce88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world/chunk/block/texture/MoreTiles.png"
-dest_files=["res://.godot/imported/MoreTiles.png-eb7e8522a16c2884032b7b53ea748247.ctex"]
+source_file="res://readme_assets/Landscape.PNG"
+dest_files=["res://.godot/imported/Landscape.PNG-cb16560cfd3dd95b18b874e4c2f3ce88.ctex"]
 
 [params]
 
